@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-App='myApp'>
+<head>
+  <title>New Survey!</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js'></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,700' rel='stylesheet' type='text/css'>
+    <style>
+      /* ---------------- Body ------------------ */
+      body {
+        margin: 0;
+      background: #141E30; 
+      }
+
+      .container {
+        width: 550px;
+        margin: auto;
+        padding: 50px;
+        position: relative;
+        font-weight: 200;
+      }
+
+      .bodyDiv {
+        background-color: #E8E8EE;
+        width: 500px;
+        padding: 20px;
+        margin: 20px 0 20px 0;
+        border: 2px solid #DCDCDC;
+        border-radius: 5px;
+        padding-top: 10px;
+        color: black;
+        font-family: sans-serif;
+      }
+
+      h1 {
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        font-weight: 100;
+        letter-spacing: 7px;
+      }
+
+      h3 {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+
+      }
+
+      button {
+        text-align: center;
+      }
+
+      .t-a-center {
+        text-align: center;
+      }
+
+      /* console */
+
+      .metaData {
+        text-align:center; 
+        padding-top: 40px; 
+        padding-bottom: 40px;
+      }
+
+      .subscribersDiv table {
+        margin: auto;
+      }
+
+      .addSubscriber {
+        padding-top: 40px; 
+        text-align: center;
+      }
+
+      /* all */
+
+      .allBody {
+        background: white;
+      }
+
+      .allBody .repeatedDiv {
+        border: 1px solid black;
+        width: 400px;
+        margin: 15px auto;
+        text-align: center;
+      }
+
+      /* charts */
+      .chartDiv {
+        margin-bottom: 30px;
+        margin-top: 30px;
+      }
+
+      .chartDiv p {
+        text-align: center;
+      }
+    </style>
+
+
+</head>
+<body ng-controller='myCtrl'>
+  <div class='container'>
+    <h1>A new survey was completed!</h1>
+    <div class='bodyDiv'>
+      <div class="chartDiv">
+        Total number of completed surveys: {{surveysLength}}
+      </div>
+      <div class="chartDiv">
+        Were you satisfied with your service representative's performance?<br>
+        <canvas id="satisfiedChart"></canvas>
+        <p>Percent satisfied: {{percentSatisfied}}</p>
+      </div>
+      <div class="chartDiv">
+        Will you be returning for your next service or repair?<br>
+        <canvas id="likelyReturnChart"></canvas>
+        <p>Percent who will return: {{percentReturn}}</p>
+        
+        
+        <br>
+      </div>
+      <div class="chartDiv">
+        How likely are you to recommend this dealership?<br>
+        <p>Average response: {{recommendAvg}}<p>
+        <canvas id="likelyRecommendChart"></canvas>
+        
+      </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+<script src='../js/console.js'></script>
+
+</body>
+</html>

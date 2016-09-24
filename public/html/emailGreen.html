@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <style>
+    p { font-weight: normal}
+    </style>
+
+  <body>
+    <!-- <style> -->
+    <table class='body' data-made-with-foundation='' style="background: white;">
+      <tr>
+        <td class='center' align='center' valign='top'>
+          <center data-parsed=''>
+            <table class='container text-center'>
+              <tbody>
+                <tr>
+                  <td>
+                    <table class='row'>
+                      <tbody>
+                        <tr>
+                          <th class='small-12 large-12 columns first last'>
+                            <table>
+                              <tr>
+                                <th>
+                                  <h1>You have a new survey!</h1>
+                                  <div style="border:black solid 1px; border-radius:5px; margin: 20px;">
+                                    <h2>Most recent report:</h2>
+                                    <p>1. Were you satisfied with your service representative's performance? {{satisfied}}</p>
+                                    <p>2. Will you be returning for your next service or repair? {{likelyReturn}}</p>
+                                    <p>3. How likely are you to recommend this dealership? {{recommend}}</p>
+                                    <p>Customer's email address: {{email}}</p>
+                                  </div>
+                                  <div style="border:black solid 1px;border-radius:5px;margin:20px;">
+                                  <h1>Aggregate Results:</h1>
+                
+                                  <p class='lead'>Total number of surveys filled out to date: {{totalSurveys}}</p><br>
+                                  <p><b>1. Were you satisfied with your service representative's performance?</b></p>
+                                  <img src='http://chart.apis.google.com/chart?cht=p&chs=500x250&chdl=Yes%7CNo&chl=&chco=56E289|E25668&chp=0.436326388889&chtt=&chts=000000,24&chd=t:{{satisfiedT}},{{satisfiedF}}' />
+                                  <p>Yes: {{satisfiedT}}<br> No: {{satisfiedF}} <br>Percentage satisfied: {{satisfiedP}}
+                                  <p><b>2. Will you be returning for your next service or repair?</b></p>
+                                  <img src='http://chart.apis.google.com/chart?cht=p&chs=500x250&chdl=Yes%7CNo&chl=&chco=56E289|E25668&chp=0.436326388889&chtt=&chts=000000,24&chd=t:{{returnT}},{{returnF}}' />
+                                  <p>Yes: {{returnT}}<br> No: {{returnF}} <br>Percentage that would return: {{returnP}}
+                                  <p><b>3. How likely are you to recommend this dealership?</b></p>
+                                  <img src='http://chart.apis.google.com/chart?cht=bvg&chs=500x250&chco=6699CC&chxt=x&chxr=0,1,5|1,0,{{barChartHeight}}&chdl=Respondants&chbh=a&chtt=&chts=000000,24&chd=t:{{oneCount}},{{twoCount}},{{threeCount}},{{fourCount}},{{fiveCount}}' />
+                                  <p>1: {{oneCount}} <br>2: {{twoCount}}<br> 3: {{threeCount}} <br>4: {{fourCount}} <br>5: {{fiveCount}}</p>
+                                  <p>Recommend Average: {{recommendAvg}}</p><br><br>
+                                  </div>
+                                  <table class='callout'>
+                                    <tr>
+                                      <th class='callout-inner secondary'>
+                                        <table class='row'>
+                                          <tbody>
+                                            <tr>
+                                              <th class='small-12 large-6 columns first'>
+                                                <table>
+                                                  <tr>
+                                                    <th>
+                                                      <h5>Thanks for using Ernesto's service! If you have questions, contact: selenagomez45@hotmail.com</h5>
+                                                    </th>
+                                                  </tr>
+                                                </table>
+                                              </th>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </th>
+                                      <th class='expander'></th>
+                                    </tr>
+                                  </table>
+                                </th>
+                              </tr>
+                            </table>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

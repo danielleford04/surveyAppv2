@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>All Surveys</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
+	<link type="text/css" rel="stylesheet" href="../css/main.css">
+</head>
+<body ng-controller="myCtrl" class="allBody">
+		
+			
+			<div class="repeatedDiv" ng-repeat="survey in surveys">
+					<h4>Satisfied: {{survey.satisfied}}</h4>
+					<h4>Will Return: {{survey.likelyReturn}}</h4>
+					<h4>Likely to Recommend: {{survey.likelyRecommend}}</h4>
+					<h4>Feedback: {{survey.feedback}}</h4>
+					<h6>Email: {{survey.email}}</h6>
+
+
+			</div>
+		
+
+
+
+	<script src="/js/console.js" type="text/javascript"></script>
+</body>
+</html>

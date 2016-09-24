@@ -1,0 +1,101 @@
+/* ---------------- Body ------------------ */
+body {
+	margin: 0;
+			/*------ Gradient -------*/
+				
+
+background: #141E30; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+.container {
+	width: 550px;
+	margin: auto;
+	padding: 50px;
+	position: relative;
+	font-weight: 200;
+}
+
+.bodyDiv {
+	background-color: #E8E8EE;
+	width: 500px;
+	padding: 20px;
+	margin: 20px 0 20px 0;
+	border: 2px solid #DCDCDC;
+	border-radius: 5px;
+	padding-top: 10px;
+	color: black;
+	font-family: sans-serif;
+}
+
+h1 {
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+	font-weight: 100;
+	letter-spacing: 7px;
+}
+
+h3 {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+
+}
+
+button {
+	text-align: center;
+}
+
+.t-a-center {
+	text-align: center;
+}
+
+/* console */
+
+.metaData {
+	text-align:center; 
+	padding-top: 40px; 
+	padding-bottom: 40px;
+}
+
+.subscribersDiv table {
+	margin: auto;
+}
+
+.addSubscriber {
+	padding-top: 40px; 
+	text-align: center;
+}
+
+/* all */
+
+.allBody {
+	background: white;
+}
+
+.allBody .repeatedDiv {
+	border: 1px solid black;
+	width: 400px;
+	margin: 15px auto;
+	text-align: center;
+}
+
+/* charts */
+.chartDiv {
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.chartDiv p {
+	text-align: center;
+}
+
+/* -------- mobile ---------*/
+
+/*@media screen and (max-width: 800px) {
+	.bodyDiv {
+		width:100%;
+	}
+}*/

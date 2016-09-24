@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-App="myApp">
+<head>
+	<title>Survey Dashboard</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="../css/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,700' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body ng-controller="myCtrl">
+	<div class="container">
+		<div class="bodyDiv">
+			<h3>Data</h3>
+			<div class="chartDiv">
+				Total number of completed surveys: {{surveysLength}}
+			</div>
+			<div class="chartDiv">
+				Were you satisfied with your service representative's performance?<br>
+				<canvas id="satisfiedChart"></canvas>
+				<p>Percent satisfied: {{percentSatisfied}}</p>
+			</div>
+			<div class="chartDiv">
+				Will you be returning for your next service or repair?<br>
+				<canvas id="likelyReturnChart"></canvas>
+				<p>Percent who will return: {{percentReturn}}</p>
+				
+				
+				<br>
+			</div>
+			<div class="chartDiv">
+				How likely are you to recommend this dealership?<br>
+				<p>Average response: {{recommendAvg}}<p>
+				<canvas id="likelyRecommendChart"></canvas>
+				
+			</div>
+			
+
+
+
+		</div>
+		<div class="bodyDiv metaData">
+			<p>Last email sent: {{lastEmailDate}}</p>
+			<button ng-click="sendEmail()">Send Updated Data to Subscribers Now</button><br><br>
+			<a href="/api/surveys" target="_blank"><button>View All Survey Data</button></a>
+		</div>
+		<div class="bodyDiv subscribersDiv">
+			<h3>Email Subscribers</h3>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+				</tr>
+				<tr ng-repeat="emailSubscriber in subscribers">
+					<td>{{emailSubscriber.name}}</td>
+					<td>{{emailSubscriber.email}}</td>
+					<td><button ng-click="deleteSubscriber(emailSubscriber._id)">Delete</button></td>
+				</tr>
+			</table>
+			<div class="addSubscriber">
+				<form ng-submit="addSubscriber()">
+					Add subscriber:
+				  <input ng-model="newSubscriber.name" placeholder="Name">
+				  <input type="email" ng-model="newSubscriber.email" name="newSubEmail" required placeholder="Email">
+				  <input type="submit">
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+<script src="../js/console.js"></script>
+
+</body>
+</html>
+
+<!-- 
+fucking bar chart issue
+b4 live:update link in plain html, send email address
+upgrades: alerts, 'no data' for charts if no data
+-->
