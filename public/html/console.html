@@ -12,6 +12,19 @@
 </head>
 <body ng-controller="myCtrl">
 	<div class="container">
+		<div class="bodyDiv subscribersDiv">
+			<h3>Create New Link</h3>
+			<div class="createLink">
+				<form name="createLinkForm" ng-submit="createLink()">
+					Order Number:
+				  <input ng-model="createLinkForm.orderNumber" required placeholder="Order Number">
+				  <input class="btn" type="submit">
+				</form>
+				<div class="newLink">
+					<p>{{newLink}}</p>
+				</div>
+			</div>
+		</div>
 		<div class="bodyDiv">
 			<h3>Data</h3>
 			<div class="chartDiv">
@@ -75,9 +88,3 @@
 
 </body>
 </html>
-
-<!-- 
-fucking bar chart issue
-b4 live:update link in plain html, send email address
-upgrades: alerts, 'no data' for charts if no data
--->

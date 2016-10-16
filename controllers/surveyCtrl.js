@@ -13,7 +13,8 @@ var submitSurvey = function(req, res){
 		likelyReturn	: req.body.likelyReturn === 'true' ? true : false,
 		likelyRecommend	: +req.body.likelyRecommend,
 		email			: req.body.email,
-		feedback		: req.body.feedback
+		feedback		: req.body.feedback,
+		orderNumber     : req.body.orderNumber
 	})
 
 	newSurvey.save( function(err, doc){

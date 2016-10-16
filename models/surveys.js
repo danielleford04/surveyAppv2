@@ -8,7 +8,8 @@ var surveyResultsSchema = mongoose.Schema({
 	likelyReturn	: {type : Boolean},
 	likelyRecommend : {type : Number},
 	email			: {type : String},
-	feedback		: {type : String}
+	feedback		: {type : String},
+	orderNumber     : {type : String}
 });
 
 

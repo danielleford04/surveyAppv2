@@ -4,6 +4,12 @@ app.controller('myCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.surveysLength = 0;
 
+    // create new link with order number
+    $scope.newLink;
+    $scope.createLink = function(){
+        $scope.newLink = "104.236.13.140/?order=" + $scope.createLinkForm.orderNumber
+    }
+
 //get survey data
     $http.get('/api/surveys')
     .then(function(returnData){
@@ -15,8 +21,21 @@ app.controller('myCtrl', ['$scope', '$http', function($scope, $http) {
 $scope.submitSurvey = function(){
     var feedback;
 
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    $scope.newSurvey.orderNumber = getParameterByName('order')
+
     if ($scope.newSurvey.satisfied && $scope.newSurvey.likelyReturn && $scope.newSurvey.likelyRecommend >= 3) {
             swal("Thank you!", "Thank you for rating our dealership truly exceptional!", "success")
+            $scope.newSurvey.orderNumber = getParameterByName('order')
             $http.post('/api/surveys', $scope.newSurvey) //Req TO SERVER
                 .then(function(returnData){ //Res FROM SERVER
                     console.log($scope.newSurvey);
@@ -40,6 +59,7 @@ $scope.submitSurvey = function(){
                 return false   } 
             feedback = inputValue;
             $scope.newSurvey.feedback = feedback;
+            $scope.newSurvey.orderNumber = getParameterByName('order')
             $http.post('/api/surveys', $scope.newSurvey) //Req TO SERVER
                 .then(function(returnData){ //Res FROM SERVER
                     swal("Thank you for your feedback!", '', "success");
@@ -287,6 +307,7 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
         html: "", // html body 
         context: {
           totalSurveys : $scope.surveysLength,
+          orderNumber     : mostRecentSurvey.orderNumber,
           satisfiedT      : 0,
           satisfiedF      : 0,
           satisfiedP      : 0,
