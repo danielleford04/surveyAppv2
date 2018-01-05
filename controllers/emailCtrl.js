@@ -13,6 +13,7 @@ var sendEmail = function(req, res) {
 	var transporter = nodemailer.createTransport('smtps://danielleford04%40gmail.com:NeoDiamoa44@smtp.gmail.com');
 	 
 	var mailOptions = req.body;
+	console.log(mailOptions)
 
 // create template based sender function
 var sendTemplateEmail = transporter.templateSender({

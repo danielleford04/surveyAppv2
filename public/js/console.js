@@ -7,7 +7,7 @@ app.controller('myCtrl', ['$scope', '$http', function($scope, $http) {
     // create new link with order number
     $scope.newLink;
     $scope.createLink = function(){
-        $scope.newLink = "104.236.13.140/?order=" + $scope.createLinkForm.orderNumber
+        $scope.newLink = "www.ourcustomersurvey.com/?order=" + $scope.createLinkForm.orderNumber
     }
 
 //get survey data
@@ -275,6 +275,7 @@ $scope.deleteSubscriber = function(subscriberId) {
 
     $http.get('/api/email')
     .then(function(returnData){
+        if (returnData && returnData.data && returnData.data[0] && returnData.data[0].date) {
        var lastEmailDate = returnData.data[0].date;
 
        var date = new Date(lastEmailDate);
@@ -282,22 +283,39 @@ $scope.deleteSubscriber = function(subscriberId) {
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
         $scope.lastEmailDate = month + '-' + day + '-' + year;
+    }
     })
 
 var emailHtml;
 
 $scope.sendEmail = function(templatePath, mostRecentSurvey){
+    var orderNumber = 0;
+    var satisfied = null;
+    var likelyReturn = null;
+    var likelyRecommend = null;
+    var email = null;
+    var feedback = null;
+    if (mostRecentSurvey){
+        orderNumber = mostRecentSurvey.orderNumber || 0;
+        likelyRecommend = mostRecentSurvey.likelyRecommend;
+        email = mostRecentSurvey.email;
+        feedback = mostRecentSurvey.feedback;
     if (mostRecentSurvey.satisfied) {
         mostRecentSurvey.satisfied = "Yes"
+        satisfied = "Yes";
     } else {
         mostRecentSurvey.satisfied = "No"
+        satisfied = "No";
     }
 
         if (mostRecentSurvey.likelyReturn) {
         mostRecentSurvey.likelyReturn = "Yes"
+        likelyReturn = "Yes";
     } else {
         mostRecentSurvey.likelyReturn = "No"
+        likelyReturn = "No"
     }
+}
 
     var mailOptions = {
         from: '"Danielle" <danielleford04@gmail.com>', // sender address 
@@ -307,7 +325,7 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
         html: "", // html body 
         context: {
           totalSurveys : $scope.surveysLength,
-          orderNumber     : mostRecentSurvey.orderNumber,
+          orderNumber     : orderNumber,
           satisfiedT      : 0,
           satisfiedF      : 0,
           satisfiedP      : 0,
@@ -320,11 +338,11 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
           fourCount       : 0,
           fiveCount       : 0,
           recommendAvg    : 0,
-          satisfied       : mostRecentSurvey.satisfied,
-          likelyReturn    : mostRecentSurvey.likelyReturn,
-          recommend       : mostRecentSurvey.likelyRecommend,
-          email           : mostRecentSurvey.email || "None provided",
-          feedback        : mostRecentSurvey.feedback || "None provided",
+          satisfied       : satisfied,
+          likelyReturn    : likelyReturn,
+          recommend       : likelyRecommend,
+          email           : email || "None provided",
+          feedback        : feedback || "None provided",
           barChartHeight: 5
         }
     };
@@ -334,11 +352,12 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
     // $http.get('../html/emailGreen.html')
     $http.get(templatePath)
     .then(function(returnData){
-
+        console.log(1)
         mailOptions.html = returnData.data;
         //get subscribers for 'to' field
         $http.get('/api/subscribers')
         .then(function(returnData){
+            console.log(2)
             $scope.subscribers = returnData.data
             var emailSendTo;
             var emailSendToArr = [];
@@ -351,6 +370,7 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
             //get survey data to set context variables in email
             $http.get('/api/surveys/dataReport')
             .then(function(returnData){
+                console.log(3)
                 $scope.surveyReport = returnData.data
                 $scope.satisfiedReport = $scope.surveyReport[0]
                 $scope.likelyReturnReport = $scope.surveyReport[1]
@@ -427,6 +447,7 @@ $scope.sendEmail = function(templatePath, mostRecentSurvey){
                  //send email
                 $http.post('/api/email', mailOptions) //Req TO SERVER
                     .then(function(returnData){ //Res FROM SERVER
+                        console.log(5)
                         console.log('Sent an email! ', returnData)
                     })
             })

@@ -49,18 +49,22 @@
 				<canvas id="likelyRecommendChart"></canvas>
 				
 			</div>
+			<div style="text-align:center;">
+			<a href="/all" target="_blank"><button class="btn">View All Surveys</button></a>
+			</div>
 			
 
 
 
 		</div>
-		<div class="bodyDiv metaData">
+<!-- 		<div class="bodyDiv metaData">
 			<p>Last email sent: {{lastEmailDate}}</p>
-			<button class="btn" ng-click="sendEmail()">Send Updated Data to Subscribers Now</button><br><br>
-			<a href="/all" target="_blank"><button class="btn">View All Survey Data</button></a>
-		</div>
+			<button class="btn" ng-click="sendEmail('../html/email.html')">Send Updated Data to Subscribers Now</button><br><br>
+			<a href="/all" target="_blank"><button class="btn">View All Surveys</button></a>
+		</div> -->
 		<div class="bodyDiv subscribersDiv">
 			<h3>Email Subscribers</h3>
+			<p style="text-align:center;">Last email sent: {{lastEmailDate}}</p>
 			<table>
 				<tr>
 					<th>Name</th>
